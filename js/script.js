@@ -1,3 +1,9 @@
+// zasady gry
+
+function playGame(playerInput){
+    clearMessages()
+}
+
 // 1. ustal wybór gracza i komputera
 
 function getMoveName(argMoveId){
@@ -48,9 +54,20 @@ function displayResult(argComputerMove, argPlayerMove){
     else {
             printMessage('Komputer wygrywa!');
   }
-	  
-  }
 
+ // guziki
+
+ function buttonClicked(){
+    printMessage('Button został kliknięty')
+}
+    playButton1 = document.getElementById('play-stone');
+    playButton1.addEventListener('click', function(){playGame(1)});
+    
+    playButton2 = document.getElementById('play-paper');
+    playButton2.addEventListener('click', function(){playGame(2)});
+    
+    playButton3 = document.getElementById('play-scissors');
+    playButton3.addEventListener('click', function(){playGame(3)});
 
 
 /*// 1. ustal wybór gracza

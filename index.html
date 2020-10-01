@@ -7,7 +7,23 @@
 </head>
 <body>
 	<div class="container">
-		<div id="buttons"></div>
+		<h2>Witam na stronie z grą Papier, Nożyce, Kamień.</h2>
+        <h4>Oto zasady gry: </h4>
+		<p>Gracz wybiera czy chce zagrać kamień, nożyce czy papier klikajać odpowiedni przycisk.<br>
+			Po czym losowane jest zagranie komputera.<br>
+			Takie same zagrania oznaczają remis.<br>
+			Oba zagrania są porównywane na zasadzie:
+        </p>
+        <ul>
+            <li>Papier wygrywa z kamieniem, przegrywa z nożycami.</li>
+            <li>Kamień wygrywa z nożycami, przegrywa z papierem</li>
+            <li>Nożyce wygrywają z papierem, przegrywają z kamieniem</li>
+        </ul>
+        <div id="messages"></div>
+        <div id="buttons">
+            <button id="play-stone">kamień</button>
+            <button id="play-paper">Papier</button>
+            <button id="play-scissors">nożyce</button>
 		<div id="messages"></div>
 	</div>
 	<script src="js/functions.js"></script>
