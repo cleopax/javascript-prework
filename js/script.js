@@ -1,4 +1,60 @@
-// 1. ustal wybór gracza
+// 1. ustal wybór gracza i komputera
+
+function getMoveName(argMoveId){
+	if(argMoveID == 1){
+        return kamień;
+    } else if(argMoveID == 2){
+        return papier;
+    } else if(argMoveID == 3){
+        return nożyce;
+    } else {
+        printMessage('Nie znam ruchu o ID ' + argMoveID + '.');
+        return 'nieznany ruch';
+    }
+}
+
+let computerMove = getMoveName(randomNumber);
+printMessage('Mój ruch to: ' + computerMove);
+
+randomNumber = Math.floor(Math.random()*3+1);
+
+console.log('Wylosowana liczba to: '+ randomNumber);
+
+let playerMove = getMoveName(randomNumber)
+printMessage('Twój ruch: ' + playerMove);
+
+console.log('Gracz wybrał: ' + playerInput);
+playerMove = getMoveName(playerInput);
+
+console.log('Ruchy graczy: ', computerMove, playerMove);
+    
+
+//  Ustal zwycięzcę
+
+function displayResult(argComputerMove, argPlayerMove){
+	printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
+  
+	if((argComputerMove == 'kamień' && argPlayerMove == 'papier') || 
+        (argComputerMove == 'nożyce' && argPlayerMove == 'kamień') ||
+        (argComputerMove == 'papier' && argPlayerMove == 'nożyce')) {
+	        printMessage('Ty wygrywasz!');
+  } 
+    else if(argComputerMove == argPlayerMove) {
+            printMessage('Remis!');
+  }
+    else if(argPlayerMove == 'nieznany ruch') {
+            printMessage('Błąd!');
+  }
+    else {
+            printMessage('Komputer wygrywa!');
+  }
+	  
+  }
+
+
+
+/*// 1. ustal wybór gracza
+
 
 let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
   playerMove = '';
