@@ -1,4 +1,4 @@
-// zasady gry
+// ustalenie guzików
 
 const stoneBtn = document.getElementById('play-stone');
 const paperBtn = document.getElementById('play-paper');
@@ -9,6 +9,11 @@ const scissorsBtn = document.getElementById('play-scissors');
 stoneBtn.addEventListener('click', function() { playGame(1) });
 paperBtn.addEventListener('click', function() { playGame(2) });
 scissorsBtn.addEventListener('click', function() { playGame(3) });
+
+// wynik globny
+
+let playerScore = 0;
+let computerScore = 0;
 
 // funckja konwertująca wybór w formie liczby na tekst (1 -> 'stone')
 
@@ -25,14 +30,16 @@ function displayResult(argPlayer, argComputer) {
 
   if((argComputer == 'stone' && argPlayer == 'paper') ||
     (argComputer == 'scissors' && argPlayer == 'stone') ||
-    (argComputer == 'paper' && argPlayer == 'scissors')) {
-      printMessage('Ty wygrywasz!');
+    (argComputer == 'papier' && argPlayer == 'nożyce')) {
+      playerScore++;
+      printMessage('Ty wygrywasz! Aktualne punkty ' + playerScore + ':' + computerScore);
   }
   else if(argComputer == argPlayer) {
-     printMessage('Remis!');
+     printMessage('Remis! Aktualne punkty ' + playerScore + ':' + computerScore);
   }
   else {
-     printMessage('Komputer wygrywa!');
+     computerScore++;
+     printMessage('Komputer wygrywa! Aktualne punkty ' + playerScore + ':' + computerScore);
   }
 }
 
@@ -41,23 +48,19 @@ function displayResult(argPlayer, argComputer) {
 function playGame(playerInput) {
   clearMessages();
   
-  // konwersja wyboru gracza z numeru na tekst (1 -> 'stone')
+  // wybor gracza (1 -> 'stone')
 
   const playerMove = getMoveName(playerInput);
 
-  // ustalenie wyboru komputera
+  // wybor komputera
 
   const randomNumber = Math.floor(Math.random()*3+1); //losowanie od 1 do 3
   const computerMove = getMoveName(randomNumber);
   
   // ustalenie zwyciezcy
-
+  
   displayResult(playerMove, computerMove);
 }
-function playGame(playerInput){
-    clearMessages()
-}
-
 
 /*// 1. ustal wybór gracza
 
