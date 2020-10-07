@@ -1,73 +1,62 @@
 // zasady gry
 
+const stoneBtn = document.getElementById('play-stone');
+const paperBtn = document.getElementById('play-paper');
+const scissorsBtn = document.getElementById('play-scissors');
+
+// nasłuchiwacze
+
+stoneBtn.addEventListener('click', function() { playGame(1) });
+paperBtn.addEventListener('click', function() { playGame(2) });
+scissorsBtn.addEventListener('click', function() { playGame(3) });
+
+// funckja konwertująca wybór w formie liczby na tekst (1 -> 'stone')
+
+function getMoveName(argMoveID) {
+  if(argMoveID == 1) return 'stone';
+  else if(argMoveID == 2) return 'paper';
+  else if(argMoveID == 3) return 'scissors';
+}
+
+// funkcja ustalająca i pokazująca wynik
+
+function displayResult(argPlayer, argComputer) {
+  printMessage('Zagrałem ' + argComputer + ', a Ty ' + argPlayer);
+
+  if((argComputer == 'stone' && argPlayer == 'paper') ||
+    (argComputer == 'scissors' && argPlayer == 'stone') ||
+    (argComputer == 'paper' && argPlayer == 'scissors')) {
+      printMessage('Ty wygrywasz!');
+  }
+  else if(argComputer == argPlayer) {
+     printMessage('Remis!');
+  }
+  else {
+     printMessage('Komputer wygrywa!');
+  }
+}
+
+// funkcja rozpoczynająca rundę
+
+function playGame(playerInput) {
+  clearMessages();
+  
+  // konwersja wyboru gracza z numeru na tekst (1 -> 'stone')
+
+  const playerMove = getMoveName(playerInput);
+
+  // ustalenie wyboru komputera
+
+  const randomNumber = Math.floor(Math.random()*3+1); //losowanie od 1 do 3
+  const computerMove = getMoveName(randomNumber);
+  
+  // ustalenie zwyciezcy
+
+  displayResult(playerMove, computerMove);
+}
 function playGame(playerInput){
     clearMessages()
 }
-
-// 1. ustal wybór gracza i komputera
-
-function getMoveName(argMoveId){
-	if(argMoveID == 1){
-        return kamień;
-    } else if(argMoveID == 2){
-        return papier;
-    } else if(argMoveID == 3){
-        return nożyce;
-    } else {
-        printMessage('Nie znam ruchu o ID ' + argMoveID + '.');
-        return 'nieznany ruch';
-    }
-}
-
-let computerMove = getMoveName(randomNumber);
-printMessage('Mój ruch to: ' + computerMove);
-
-randomNumber = Math.floor(Math.random()*3+1);
-
-console.log('Wylosowana liczba to: '+ randomNumber);
-
-let playerMove = getMoveName(randomNumber)
-printMessage('Twój ruch: ' + playerMove);
-
-console.log('Gracz wybrał: ' + playerInput);
-playerMove = getMoveName(playerInput);
-
-console.log('Ruchy graczy: ', computerMove, playerMove);
-    
-
-//  Ustal zwycięzcę
-
-function displayResult(argComputerMove, argPlayerMove){
-	printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
-  
-	if((argComputerMove == 'kamień' && argPlayerMove == 'papier') || 
-        (argComputerMove == 'nożyce' && argPlayerMove == 'kamień') ||
-        (argComputerMove == 'papier' && argPlayerMove == 'nożyce')) {
-	        printMessage('Ty wygrywasz!');
-  } 
-    else if(argComputerMove == argPlayerMove) {
-            printMessage('Remis!');
-  }
-    else if(argPlayerMove == 'nieznany ruch') {
-            printMessage('Błąd!');
-  }
-    else {
-            printMessage('Komputer wygrywa!');
-  }
-
- // guziki
-
- function buttonClicked(){
-    printMessage('Button został kliknięty')
-}
-    playButton1 = document.getElementById('play-stone');
-    playButton1.addEventListener('click', function(){playGame(1)});
-    
-    playButton2 = document.getElementById('play-paper');
-    playButton2.addEventListener('click', function(){playGame(2)});
-    
-    playButton3 = document.getElementById('play-scissors');
-    playButton3.addEventListener('click', function(){playGame(3)});
 
 
 /*// 1. ustal wybór gracza
